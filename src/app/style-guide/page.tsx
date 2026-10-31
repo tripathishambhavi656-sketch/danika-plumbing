@@ -117,19 +117,19 @@ export default function StyleGuidePage() {
               </div>
 
               <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
-                <div className="h-16 rounded-lg bg-[#F97316]" />
+                <div className="h-16 rounded-lg bg-[#C2410C]" />
                 <div>
                   <div className="text-xs font-bold text-slate-900">Emergency Orange</div>
-                  <div className="text-[11px] font-mono text-slate-500">#F97316</div>
+                  <div className="text-[11px] font-mono text-slate-500">#C2410C (5.17:1 AA)</div>
                   <div className="text-[10px] text-slate-400">Primary CTA / Dispatch</div>
                 </div>
               </div>
 
               <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
-                <div className="h-16 rounded-lg bg-[#EA580C]" />
+                <div className="h-16 rounded-lg bg-[#9A3412]" />
                 <div>
                   <div className="text-xs font-bold text-slate-900">Orange Hover</div>
-                  <div className="text-[11px] font-mono text-slate-500">#EA580C</div>
+                  <div className="text-[11px] font-mono text-slate-500">#9A3412 (7.38:1 AAA)</div>
                   <div className="text-[10px] text-slate-400">Active / Pressed</div>
                 </div>
               </div>
