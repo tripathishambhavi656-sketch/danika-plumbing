@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { UtilityBar, Header } from "@/components/layout";
+import { UtilityBar, Header, Footer, MobileActionDock } from "@/components/layout";
 import {
   HeroSection,
   TrustStrip,
@@ -9,14 +9,16 @@ import {
   FinancingOffers,
   ServiceAreasSection,
   TestimonialsSection,
+  FAQSection,
+  ContactSection,
 } from "@/components/sections";
 import { Container } from "@/components/ui";
 import { COMPANY_INFO, VERIFIED_STATISTICS } from "@/data/company";
-import { Phone, ShieldCheck, MapPin, ArrowRight } from "lucide-react";
+import { ShieldCheck, ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col justify-between font-sans selection:bg-red-100 selection:text-red-950">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col justify-between font-sans selection:bg-red-100 selection:text-red-950 pb-16 md:pb-0">
       {/* 1. Top Emergency Information Bar */}
       <UtilityBar />
 
@@ -93,79 +95,18 @@ export default function Home() {
           </Container>
         </section>
 
-        {/* Final Conversion / Contact Anchor Section */}
-        <section id="contact" className="py-12 bg-white border-b border-slate-200">
-          <Container>
-            <div className="max-w-4xl mx-auto p-8 rounded-3xl bg-gradient-to-r from-red-50 via-slate-50 to-red-50 border-2 border-red-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
-              <div>
-                <span className="text-xs font-black uppercase tracking-wider text-red-700">Immediate Dispatch or Scheduled Visits</span>
-                <h3 className="text-xl sm:text-2xl font-black text-slate-900 mt-1">
-                  Ready to Book Danika Plumbing &amp; Electric?
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-lg">
-                  Speak directly with our local Everett dispatch center 24/7 or schedule your plumbing and electrical service online.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full sm:w-auto">
-                <a
-                  href={`tel:${COMPANY_INFO.phonePrimary}`}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#991B1B] hover:bg-[#7F1D1D] active:bg-[#581010] text-white px-6 py-3.5 rounded-xl font-bold text-sm shadow-md transition-colors"
-                >
-                  <Phone className="w-4 h-4 text-yellow-400" />
-                  <span>Call {COMPANY_INFO.phoneFormatted}</span>
-                </a>
-              </div>
-            </div>
-          </Container>
-        </section>
+        {/* Accessible Frequently Asked Questions Accordion */}
+        <FAQSection />
+
+        {/* Complete Conversion & Dispatch Booking Section */}
+        <ContactSection />
       </main>
 
-      {/* Verified NAP Footer */}
-      <footer className="bg-slate-950 text-slate-400 py-12 px-4 text-xs border-t border-slate-800">
-        <Container className="flex flex-col gap-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
-            <div>
-              <div className="text-lg font-black text-white tracking-tight">DANIKA PLUMBING &amp; ELECTRIC</div>
-              <div className="text-red-400 font-bold text-xs mt-1">Licensed, Bonded &amp; Insured in Washington State</div>
-              <p className="text-slate-400 mt-2 text-xs leading-relaxed">
-                Dedicated to honest craftsmanship, upfront flat-rate pricing, and fast emergency response across Snohomish County and King County since 2009.
-              </p>
-            </div>
+      {/* Comprehensive Verified NAP Footer */}
+      <Footer />
 
-            <div>
-              <div className="text-sm font-bold text-white uppercase tracking-wider mb-2">Everett Headquarters</div>
-              <div className="flex items-center justify-center md:justify-start gap-1.5 text-slate-300">
-                <MapPin className="w-3.5 h-3.5 text-red-500 shrink-0" />
-                <span>{COMPANY_INFO.address.street}, {COMPANY_INFO.address.city}, {COMPANY_INFO.address.state} {COMPANY_INFO.address.zip}</span>
-              </div>
-              <div className="mt-2 text-slate-400">
-                Office Hours: {COMPANY_INFO.hours.office}
-              </div>
-            </div>
-
-            <div>
-              <div className="text-sm font-bold text-white uppercase tracking-wider mb-2">Licenses &amp; Contact</div>
-              <div>Plumbing License: <span className="font-mono text-slate-300 font-bold">#{COMPANY_INFO.licenses.plumbing}</span></div>
-              <div>Electrical License: <span className="font-mono text-slate-300 font-bold">#{COMPANY_INFO.licenses.electrical}</span></div>
-              <div className="mt-2 text-slate-300 font-bold flex items-center justify-center md:justify-start gap-1.5">
-                <Phone className="w-3.5 h-3.5 text-yellow-400" />
-                <span>Direct Dispatch: {COMPANY_INFO.phoneFormatted}</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-slate-500">
-            <div>
-              &copy; 2026 Danika Plumbing LLC. All rights reserved.
-            </div>
-            <div className="flex items-center gap-4">
-              <Link href="/style-guide" className="hover:text-red-400 transition-colors">
-                Internal Style Guide
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </footer>
+      {/* Sticky Mobile Action Dock for Instant Dial and Booking */}
+      <MobileActionDock />
     </div>
   );
 }

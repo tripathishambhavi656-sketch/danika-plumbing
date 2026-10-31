@@ -6,3 +6,5 @@ export * from "./WhyChooseUs";
 export * from "./FinancingOffers";
 export * from "./ServiceAreasSection";
 export * from "./TestimonialsSection";
+export * from "./FAQSection";
+export * from "./ContactSection";

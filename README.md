@@ -77,10 +77,14 @@ danika-plumbing/
   - Built comprehensive TrustStrip displaying WA licenses, upfront pricing, 24/7 dispatch, and workmanship guarantee.
   - Implemented 6-card multi-trade ServicesSection for residential plumbing and licensed electrical services.
   - Developed full-width EmergencyBanner for immediate 24/7 dispatch across Snohomish and King Counties.
-- [ ] **Milestone 5:** Service Areas, Verified Reviews & FAQ Section
-- [ ] **Milestone 6:** Booking Inquiry Form & NAP Footer
-- [ ] **Milestone 7:** Responsive Optimization, Accessibility & Core Web Vitals Tuning
-- [ ] **Milestone 8:** Final Polish, Performance Tuning & Deployment
+- [x] **Milestone 5:** FAQ, Conversion Flow, Complete NAP Footer & Mobile Action Dock
+  - Created accessible interactive FAQSection accordion with keyboard navigation, ARIA controls, and verified customer questions.
+  - Implemented multi-trade ContactSection with service category picker, emergency toggle, 24/7 direct dial dispatch hotline, and Everett HQ verification.
+  - Developed comprehensive 4-column NAP Footer with pre-footer emergency strip, service catalog, license credentials (WA #DANIKPL839PF & #DANIKPL745CD), office hours, and legal copyright.
+  - Built sticky MobileActionDock with 48px touch targets for mobile click-to-call and instant booking navigation.
+  - Verified 100% anchor navigation resolution (`#services`, `#service-areas`, `#why-choose-us`, `#financing`, `#reviews`, `#about`, `#faq`, `#contact`).
+- [ ] **Milestone 6:** Responsive Optimization, Accessibility & Core Web Vitals Tuning
+- [ ] **Milestone 7:** Final Polish, Performance Tuning & Deployment
 
 ---
 
