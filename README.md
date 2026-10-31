@@ -71,10 +71,15 @@ danika-plumbing/
   - Implemented desktop header with multi-trade BrandLogo, service dropdown, and primary CTA.
   - Built fully accessible mobile navigation drawer (44px+ touch targets, keyboard Escape listener, body scroll lock).
   - Developed conversion-optimized hero section with single semantic H1, verified copy, dual CTAs, trust pill grid, and priority-loaded Next.js hero photography.
-- [ ] **Milestone 4:** Trust Signals, Credentials & Comprehensive Service Showcase
-- [ ] **Milestone 5:** Emergency Dispatch Spotlight & Why Choose Us
-- [ ] **Milestone 6:** Service Areas, Verified Reviews & FAQ Section
-- [ ] **Milestone 7:** Booking Inquiry Form & NAP Footer
+- [x] **Milestone 4:** Trust Signals, Credentials & Comprehensive Service Showcase
+  - Preserved ~75% original Danika visual identity with red / dark maroon brand direction and authentic logo styling.
+  - Implemented large, impactful full-width hero with dark readability overlay, centered commanding headline, and prominent CTAs.
+  - Built comprehensive TrustStrip displaying WA licenses, upfront pricing, 24/7 dispatch, and workmanship guarantee.
+  - Implemented 6-card multi-trade ServicesSection for residential plumbing and licensed electrical services.
+  - Developed full-width EmergencyBanner for immediate 24/7 dispatch across Snohomish and King Counties.
+- [ ] **Milestone 5:** Service Areas, Verified Reviews & FAQ Section
+- [ ] **Milestone 6:** Booking Inquiry Form & NAP Footer
+- [ ] **Milestone 7:** Responsive Optimization, Accessibility & Core Web Vitals Tuning
 - [ ] **Milestone 8:** Final Polish, Performance Tuning & Deployment
 
 ---
