@@ -5,6 +5,10 @@ import {
   TrustStrip,
   ServicesSection,
   EmergencyBanner,
+  WhyChooseUs,
+  FinancingOffers,
+  ServiceAreasSection,
+  TestimonialsSection,
 } from "@/components/sections";
 import { Container } from "@/components/ui";
 import { COMPANY_INFO, VERIFIED_STATISTICS } from "@/data/company";
@@ -24,14 +28,26 @@ export default function Home() {
         {/* Large, Full-Width Impactful Hero Section */}
         <HeroSection />
 
-        {/* Milestone 4: Credentials & Trust Strip */}
+        {/* Credentials & Trust Strip */}
         <TrustStrip />
 
-        {/* Milestone 4: Comprehensive Plumbing & Electrical Services Showcase */}
+        {/* Comprehensive Plumbing & Electrical Services Showcase */}
         <ServicesSection />
 
-        {/* Milestone 4: 24/7 Rapid Emergency Response Spotlight Banner */}
+        {/* 24/7 Rapid Emergency Response Spotlight Banner */}
         <EmergencyBanner />
+
+        {/* The Danika Difference: Why Choose Us */}
+        <WhyChooseUs />
+
+        {/* Special Discount Coupons & Consumer Financing */}
+        <FinancingOffers />
+
+        {/* Local Service Areas Directory (Snohomish & King Counties) */}
+        <ServiceAreasSection />
+
+        {/* Verified Customer Reviews & Social Proof */}
+        <TestimonialsSection />
 
         {/* About Us & Local Heritage Section (Anchor #about) */}
         <section id="about" className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
@@ -49,11 +65,11 @@ export default function Home() {
                 </p>
                 <div className="grid grid-cols-2 gap-4 text-xs sm:text-sm font-bold text-slate-800">
                   <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                    <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
                     <span>Plumbing Lic #{COMPANY_INFO.licenses.plumbing}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                    <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
                     <span>Electrical Lic #{COMPANY_INFO.licenses.electrical}</span>
                   </div>
                 </div>
@@ -77,22 +93,23 @@ export default function Home() {
           </Container>
         </section>
 
-        {/* Milestone Verification Anchor */}
-        <section id="contact" className="py-10 bg-white border-b border-slate-200">
+        {/* Final Conversion / Contact Anchor Section */}
+        <section id="contact" className="py-12 bg-white border-b border-slate-200">
           <Container>
-            <div className="max-w-4xl mx-auto p-6 rounded-2xl bg-red-50/60 border border-red-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div className="max-w-4xl mx-auto p-8 rounded-3xl bg-gradient-to-r from-red-50 via-slate-50 to-red-50 border-2 border-red-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
               <div>
-                <h3 className="text-base sm:text-lg font-black text-slate-900">
-                  Ready to Schedule Service or Need Emergency Assistance?
+                <span className="text-xs font-black uppercase tracking-wider text-red-700">Immediate Dispatch or Scheduled Visits</span>
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900 mt-1">
+                  Ready to Book Danika Plumbing &amp; Electric?
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                  Call our Everett dispatch center 24/7 or speak with our friendly office staff.
+                <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-lg">
+                  Speak directly with our local Everett dispatch center 24/7 or schedule your plumbing and electrical service online.
                 </p>
               </div>
-              <div className="flex items-center gap-3 shrink-0">
+              <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full sm:w-auto">
                 <a
                   href={`tel:${COMPANY_INFO.phonePrimary}`}
-                  className="inline-flex items-center gap-2 bg-[#991B1B] hover:bg-[#7F1D1D] text-white px-5 py-3 rounded-xl font-bold text-sm shadow transition-colors"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#991B1B] hover:bg-[#7F1D1D] active:bg-[#581010] text-white px-6 py-3.5 rounded-xl font-bold text-sm shadow-md transition-colors"
                 >
                   <Phone className="w-4 h-4 text-yellow-400" />
                   <span>Call {COMPANY_INFO.phoneFormatted}</span>
@@ -111,7 +128,7 @@ export default function Home() {
               <div className="text-lg font-black text-white tracking-tight">DANIKA PLUMBING &amp; ELECTRIC</div>
               <div className="text-red-400 font-bold text-xs mt-1">Licensed, Bonded &amp; Insured in Washington State</div>
               <p className="text-slate-400 mt-2 text-xs leading-relaxed">
-                Dedicated to honest craftsmanship, upfront pricing, and fast emergency response across Snohomish County and King County since 2009.
+                Dedicated to honest craftsmanship, upfront flat-rate pricing, and fast emergency response across Snohomish County and King County since 2009.
               </p>
             </div>
 
