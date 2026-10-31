@@ -34,7 +34,10 @@ danika-plumbing/
 │   │   ├── layout.tsx            # Root layout with SEO metadata & JSON-LD
 │   │   ├── page.tsx              # Homepage foundation
 │   │   ├── robots.ts             # Search crawler directives
-│   │   └── sitemap.ts            # Dynamic XML sitemap generator
+│   │   ├── sitemap.ts            # Dynamic XML sitemap generator
+│   │   └── style-guide/          # Internal design system preview route
+│   ├── components/
+│   │   └── ui/                   # Reusable UI primitives (Container, Section, Button, etc.)
 │   ├── config/
 │   │   └── seo.ts                # SEO metadata & LocalBusiness schema
 │   ├── data/
@@ -58,7 +61,11 @@ danika-plumbing/
   - Documented discovery in `docs/PROJECT_DISCOVERY.md`.
   - Initialized Next.js App Router, TypeScript, Tailwind CSS, and Lucide React.
   - Zero linting errors & successful production build.
-- [ ] **Milestone 2:** High-Conversion Hero & Navigation Bar
+- [x] **Milestone 2:** Design System & Reusable UI Foundation
+  - Established semantic design tokens (navy, action blue, emergency orange, subtle backgrounds).
+  - Created accessible typography scale and WCAG 2.1 AA contrast standards.
+  - Built reusable component foundation (`Container`, `Section`, `Button`, `LinkButton`, `SectionHeading`, `IconBadge`, `TrustItem`, `Card`).
+  - Added internal `/style-guide` demonstration route (noindex/disallowed in robots).
 - [ ] **Milestone 3:** Trust Signals, Credentials & Service Showcase
 - [ ] **Milestone 4:** Emergency Dispatch Spotlight & Why Choose Us
 - [ ] **Milestone 5:** Service Areas, Verified Reviews & FAQ Section

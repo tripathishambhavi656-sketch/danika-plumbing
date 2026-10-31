@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { COMPANY_INFO, VERIFIED_STATISTICS } from "@/data/company";
 import { ShieldCheck, Phone, Wrench, Clock, Award } from "lucide-react";
 
@@ -68,8 +69,16 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="text-xs text-slate-500 bg-white border border-slate-200 rounded-lg p-3 max-w-md w-full">
-          <span className="font-semibold text-slate-700">Ready for Milestone 2:</span> Discovery documentation, verified data models, Next.js App Router, Tailwind CSS, TypeScript, and Lucide React configured.
+        <div className="text-xs text-slate-500 bg-white border border-slate-200 rounded-lg p-3 max-w-lg w-full flex flex-col sm:flex-row items-center justify-between gap-2 shadow-sm">
+          <span>
+            <strong className="text-slate-800">Milestone 2 Completed:</strong> Design system & reusable UI components initialized.
+          </span>
+          <Link
+            href="/style-guide"
+            className="text-xs font-bold text-orange-600 hover:text-orange-700 underline shrink-0"
+          >
+            View Style Guide →
+          </Link>
         </div>
       </main>
 

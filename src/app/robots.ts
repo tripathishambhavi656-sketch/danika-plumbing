@@ -6,6 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/style-guide"],
       },
     ],
     sitemap: "https://danikaplumbing.com/sitemap.xml",
