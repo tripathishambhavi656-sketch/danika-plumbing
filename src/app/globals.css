@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --primary-navy: #0f3e74;
+  --primary-navy-dark: #0a2e5c;
+  --action-blue: #1e88e5;
+  --emergency-orange: #f97316;
+  --emergency-orange-dark: #ea580c;
+  --slate-subtle: #f8fafc;
+  --border-subtle: #e2e8f0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-danika-navy: var(--primary-navy);
+  --color-danika-navy-dark: var(--primary-navy-dark);
+  --color-danika-blue: var(--action-blue);
+  --color-danika-orange: var(--emergency-orange);
+  --color-danika-orange-dark: var(--emergency-orange-dark);
+  --color-danika-slate: var(--slate-subtle);
+  --color-danika-border: var(--border-subtle);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessible focus outline */
+:focus-visible {
+  outline: 2px solid var(--emergency-orange);
+  outline-offset: 2px;
+}
