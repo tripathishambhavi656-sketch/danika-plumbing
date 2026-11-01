@@ -14,7 +14,7 @@ export function FAQSection() {
   };
 
   return (
-    <section id="faq" className="py-16 sm:py-20 lg:py-24 bg-slate-50 border-b border-slate-200">
+    <section id="faq" className="py-16 sm:py-20 lg:py-24 bg-slate-50 border-b border-slate-200 scroll-mt-24">
       <Container>
         {/* Section Heading */}
         <SectionHeading
@@ -53,7 +53,7 @@ export function FAQSection() {
                     >
                       <HelpCircle className="w-4 h-4" />
                     </span>
-                    <span className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
+                    <span id={`faq-question-${item.id}`} className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
                       {item.question}
                     </span>
                   </span>
@@ -70,7 +70,8 @@ export function FAQSection() {
                   <div
                     id={`faq-answer-${item.id}`}
                     role="region"
-                    className="px-5 pb-5 sm:px-6 sm:pb-6 pt-1 text-sm sm:text-base text-slate-600 leading-relaxed font-normal border-t border-slate-100"
+                    aria-labelledby={`faq-question-${item.id}`}
+                    className="px-5 pb-5 sm:px-6 sm:pb-6 pt-1 text-sm sm:text-base text-slate-600 leading-relaxed font-normal border-t border-slate-100 animate-in fade-in duration-200"
                   >
                     <p>{item.answer}</p>
                   </div>

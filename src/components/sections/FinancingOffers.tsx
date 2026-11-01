@@ -25,7 +25,7 @@ export function FinancingOffers() {
   ];
 
   return (
-    <section id="financing" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200">
+    <section id="financing" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200 scroll-mt-24">
       <Container>
         {/* Section Header */}
         <SectionHeading

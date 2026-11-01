@@ -30,7 +30,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200">
+    <section id="contact" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200 scroll-mt-24">
       <Container>
         <SectionHeading
           eyebrow="Request Service or Dispatch"
@@ -63,7 +63,8 @@ export function ContactSection() {
               <div className="mt-6">
                 <a
                   href={`tel:${COMPANY_INFO.phonePrimary}`}
-                  className="w-full flex items-center justify-center gap-3 bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 text-slate-950 font-black px-6 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all text-lg tracking-tight"
+                  aria-label={`Call Danika 24/7 Emergency Dispatch at ${COMPANY_INFO.phoneFormatted}`}
+                  className="w-full flex items-center justify-center gap-3 bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 text-slate-950 font-black px-6 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all text-lg tracking-tight hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300"
                 >
                   <Phone className="w-5 h-5 text-red-900 shrink-0" />
                   <span>Call {COMPANY_INFO.phoneFormatted}</span>
@@ -118,7 +119,11 @@ export function ContactSection() {
           {/* Right Column: Online Service Request Form (Cols: 7) */}
           <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-md">
             {formSubmitted ? (
-              <div className="p-8 text-center flex flex-col items-center justify-center space-y-4 animate-in fade-in duration-300">
+              <div
+                role="status"
+                aria-live="polite"
+                className="p-8 text-center flex flex-col items-center justify-center space-y-4 animate-in fade-in duration-300"
+              >
                 <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
@@ -132,7 +137,7 @@ export function ContactSection() {
                 <button
                   type="button"
                   onClick={() => setFormSubmitted(false)}
-                  className="text-xs font-bold text-red-700 hover:text-red-800 underline mt-2"
+                  className="text-xs font-bold text-red-700 hover:text-red-800 underline mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 rounded px-2 py-1"
                 >
                   Submit Another Request
                 </button>
@@ -159,10 +164,12 @@ export function ContactSection() {
                       id="customer-name"
                       type="text"
                       required
+                      aria-required="true"
+                      autoComplete="name"
                       placeholder="e.g. John Smith"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none transition-all"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-[#991B1B] focus:ring-2 focus:ring-red-100 outline-none transition-all"
                     />
                   </div>
 
@@ -175,10 +182,12 @@ export function ContactSection() {
                       id="customer-phone"
                       type="tel"
                       required
+                      aria-required="true"
+                      autoComplete="tel"
                       placeholder="e.g. (425) 555-0199"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none transition-all"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-[#991B1B] focus:ring-2 focus:ring-red-100 outline-none transition-all"
                     />
                   </div>
                 </div>
@@ -191,9 +200,11 @@ export function ContactSection() {
                     </label>
                     <select
                       id="customer-service"
+                      required
+                      aria-required="true"
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none transition-all bg-white"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-[#991B1B] focus:ring-2 focus:ring-red-100 outline-none transition-all bg-white"
                     >
                       <option value="Emergency Plumbing">24/7 Emergency Plumbing</option>
                       <option value="Water Heaters">Water Heater Repair / Tankless</option>
@@ -211,9 +222,11 @@ export function ContactSection() {
                     </label>
                     <select
                       id="customer-urgency"
+                      required
+                      aria-required="true"
                       value={formData.urgency}
                       onChange={(e) => setFormData({ ...formData, urgency: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none transition-all bg-white"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-[#991B1B] focus:ring-2 focus:ring-red-100 outline-none transition-all bg-white"
                     >
                       <option value="Emergency (ASAP Dispatch)">🚨 Emergency (ASAP Dispatch)</option>
                       <option value="Today">Same-Day Service</option>
@@ -231,10 +244,11 @@ export function ContactSection() {
                   <input
                     id="customer-email"
                     type="email"
+                    autoComplete="email"
                     placeholder="e.g. john@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none transition-all"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-[#991B1B] focus:ring-2 focus:ring-red-100 outline-none transition-all"
                   />
                 </div>
 
@@ -249,7 +263,7 @@ export function ContactSection() {
                     placeholder="Describe your plumbing or electrical concern (e.g., leaking water heater tank, gurgling kitchen sink, or need an EV charger estimate)..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none transition-all resize-none"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-[#991B1B] focus:ring-2 focus:ring-red-100 outline-none transition-all resize-none"
                   />
                 </div>
 

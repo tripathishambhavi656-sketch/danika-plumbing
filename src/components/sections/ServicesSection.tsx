@@ -24,7 +24,7 @@ const serviceIcons: Record<string, React.ReactNode> = {
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200">
+    <section id="services" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200 scroll-mt-24">
       <Container>
         {/* Section Heading */}
         <SectionHeading
@@ -42,7 +42,7 @@ export function ServicesSection() {
               variant="default"
               padding="default"
               id={service.slug}
-              className="flex flex-col justify-between hover:border-red-300 hover:shadow-lg transition-all duration-200 group bg-slate-50/50"
+              className="flex flex-col justify-between hover:border-red-300 hover:shadow-lg transition-all duration-200 group bg-slate-50/50 hover:-translate-y-1 scroll-mt-24"
             >
               <div>
                 {/* Header with Icon & Emergency Badge */}
@@ -99,7 +99,7 @@ export function ServicesSection() {
                   <a
                     href={`tel:${COMPANY_INFO.phonePrimary}`}
                     aria-label={`Call emergency line for ${service.title}`}
-                    className="p-2 rounded-lg border border-red-300 text-red-700 hover:bg-red-50 transition-colors shrink-0"
+                    className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-xl border border-red-300 text-red-700 hover:bg-red-50 hover:text-red-900 transition-colors shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600"
                   >
                     <Phone className="w-4 h-4 text-red-600" />
                   </a>

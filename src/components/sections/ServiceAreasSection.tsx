@@ -5,7 +5,7 @@ import { MapPin, Phone, CheckCircle2, ShieldCheck } from "lucide-react";
 
 export function ServiceAreasSection() {
   return (
-    <section id="service-areas" className="py-16 sm:py-20 lg:py-24 bg-slate-50 border-b border-slate-200">
+    <section id="service-areas" className="py-16 sm:py-20 lg:py-24 bg-slate-50 border-b border-slate-200 scroll-mt-24">
       <Container>
         <SectionHeading
           eyebrow="Local Service Coverage"

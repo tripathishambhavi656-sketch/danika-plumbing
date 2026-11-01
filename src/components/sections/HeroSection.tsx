@@ -50,14 +50,14 @@ export function HeroSection() {
       {/* Hero Content Container */}
       <Container className="relative z-10 py-16 sm:py-20 lg:py-24 text-center flex flex-col items-center">
         {/* Top Trust Pill */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/80 border border-red-500/40 text-red-200 text-xs sm:text-sm font-extrabold uppercase tracking-wider mb-6 backdrop-blur-md shadow-lg animate-in fade-in duration-300">
+        <div className="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-red-950/80 border border-red-500/40 text-red-200 text-[11px] sm:text-xs font-extrabold uppercase tracking-wider mb-6 backdrop-blur-md shadow-lg animate-in fade-in duration-300 max-w-full">
           <span className="flex h-2 w-2 relative shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
           </span>
-          <span className="text-white">24/7 Emergency Plumbing &amp; Electrical</span>
-          <span className="text-red-400">&bull;</span>
-          <span className="text-red-300">Everett &amp; Seattle, WA</span>
+          <span className="text-white text-center">24/7 Emergency Plumbing &amp; Electrical</span>
+          <span className="hidden xs:inline text-red-400">&bull;</span>
+          <span className="text-red-300 text-center">Everett &amp; Seattle, WA</span>
         </div>
 
         {/* Prominent Centered Headline */}
@@ -100,7 +100,7 @@ export function HeroSection() {
             href="#contact"
             variant="primary"
             size="lg"
-            className="w-full sm:w-auto px-8 py-4 text-base font-extrabold shadow-xl hover:shadow-2xl transition-all tracking-wide"
+            className="w-full sm:w-auto px-8 py-4 text-base font-extrabold shadow-xl hover:shadow-2xl transition-all tracking-wide hover:-translate-y-0.5"
             leftIcon={<Calendar className="w-5 h-5" />}
             rightIcon={<ArrowRight className="w-5 h-5" />}
           >
@@ -112,7 +112,7 @@ export function HeroSection() {
             href={`tel:${COMPANY_INFO.phonePrimary}`}
             variant="outline-white"
             size="lg"
-            className="w-full sm:w-auto px-8 py-4 text-base font-extrabold tracking-tight transition-all"
+            className="w-full sm:w-auto px-8 py-4 text-base font-extrabold tracking-tight transition-all hover:-translate-y-0.5"
             leftIcon={<Phone className="w-5 h-5 text-yellow-400" />}
           >
             Call: {COMPANY_INFO.phoneFormatted}

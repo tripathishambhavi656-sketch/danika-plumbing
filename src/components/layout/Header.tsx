@@ -289,9 +289,9 @@ export function Header() {
           <a
             href={`tel:${COMPANY_INFO.phonePrimary}`}
             aria-label={`Call emergency dispatch at ${COMPANY_INFO.phoneFormatted}`}
-            className="p-2.5 rounded-xl bg-red-600 text-white shadow-sm hover:bg-red-700 active:bg-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2.5 rounded-xl bg-red-600 text-white shadow-sm hover:bg-red-700 active:bg-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 transition-colors"
           >
-            <Phone className="w-4 h-4 text-white" />
+            <Phone className="w-5 h-5 text-white" />
           </a>
 
           <button
@@ -299,7 +299,7 @@ export function Header() {
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isMobileMenuOpen}
-            className="p-2.5 rounded-xl border border-slate-200 text-slate-800 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 transition-colors"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2.5 rounded-xl border border-slate-200 text-slate-800 hover:bg-slate-100 active:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 transition-colors"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6 text-red-700" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -319,7 +319,20 @@ export function Header() {
             aria-modal="true"
             aria-label="Mobile Navigation Menu"
           >
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-4">
+              {/* Drawer Top Header with Close Button */}
+              <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                <span className="text-xs font-black uppercase tracking-wider text-slate-600">Navigation Menu</span>
+                <button
+                  type="button"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  aria-label="Close navigation menu"
+                  className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-xl text-slate-600 hover:text-red-700 hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
               {/* Emergency Banner in Mobile Menu */}
               <div className="bg-red-50 border border-red-200 rounded-xl p-3 flex items-center justify-between">
                 <div className="flex items-center gap-2">

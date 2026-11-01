@@ -15,7 +15,7 @@ export function MobileActionDock() {
         {/* Direct Call Button (48px touch target) */}
         <a
           href={`tel:${COMPANY_INFO.phonePrimary}`}
-          className="min-h-[48px] flex items-center justify-center gap-2 bg-[#991B1B] hover:bg-[#7F1D1D] active:bg-[#581010] text-white px-3 py-2.5 rounded-xl font-bold text-xs shadow-md transition-colors"
+          className="min-h-[48px] flex items-center justify-center gap-2 bg-[#991B1B] hover:bg-[#7F1D1D] active:bg-[#581010] text-white px-3 py-2.5 rounded-xl font-bold text-xs shadow-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400"
           aria-label={`Call Danika Plumbing at ${COMPANY_INFO.phoneFormatted}`}
         >
           <Phone className="w-4 h-4 text-yellow-400 shrink-0" />
@@ -25,7 +25,7 @@ export function MobileActionDock() {
         {/* Schedule Online Anchor (48px touch target) */}
         <Link
           href="#contact"
-          className="min-h-[48px] flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white px-3 py-2.5 rounded-xl font-bold text-xs shadow-sm transition-colors"
+          className="min-h-[48px] flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white px-3 py-2.5 rounded-xl font-bold text-xs shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
           aria-label="Jump to online dispatch booking form"
         >
           <Calendar className="w-4 h-4 text-red-400 shrink-0" />
@@ -35,3 +35,4 @@ export function MobileActionDock() {
     </aside>
   );
 }
+

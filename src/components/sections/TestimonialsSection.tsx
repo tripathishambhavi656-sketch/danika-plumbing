@@ -5,7 +5,7 @@ import { Star, Quote, CheckCircle2 } from "lucide-react";
 
 export function TestimonialsSection() {
   return (
-    <section id="reviews" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200">
+    <section id="reviews" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200 scroll-mt-24">
       <Container>
         {/* Section Heading */}
         <SectionHeading
@@ -22,7 +22,7 @@ export function TestimonialsSection() {
               key={review.id}
               variant="default"
               padding="default"
-              className="bg-slate-50/60 border-slate-200 shadow-sm flex flex-col justify-between hover:border-red-300 hover:shadow-md transition-all duration-200"
+              className="bg-slate-50/60 border-slate-200 shadow-sm flex flex-col justify-between hover:border-red-300 hover:shadow-md transition-all duration-200 hover:-translate-y-1"
             >
               <div>
                 {/* Rating Stars & Source */}

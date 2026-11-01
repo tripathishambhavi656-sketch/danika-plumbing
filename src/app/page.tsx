@@ -18,7 +18,7 @@ import { ShieldCheck, ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col justify-between font-sans selection:bg-red-100 selection:text-red-950 pb-16 md:pb-0">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col justify-between font-sans selection:bg-red-100 selection:text-red-950 pb-24 md:pb-0">
       {/* 1. Top Emergency Information Bar */}
       <UtilityBar />
 
@@ -52,7 +52,7 @@ export default function Home() {
         <TestimonialsSection />
 
         {/* About Us & Local Heritage Section (Anchor #about) */}
-        <section id="about" className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
+        <section id="about" className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-24">
           <Container>
             <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
               <div className="md:col-span-8">

@@ -7,7 +7,7 @@ export function TrustStrip() {
   return (
     <div className="bg-[#581010] text-white py-6 border-y border-red-900/80 shadow-inner">
       <Container>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 text-left">
           {/* 1. Fully Licensed & Insured */}
           <div className="flex items-start gap-3">
             <div className="p-2.5 rounded-xl bg-white/10 text-red-200 border border-white/10 shrink-0">
