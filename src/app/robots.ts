@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { SITE_CONFIG } from "@/config/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://danikaplumbing.com/sitemap.xml",
+    sitemap: `${SITE_CONFIG.url}/sitemap.xml`,
   };
 }

@@ -72,6 +72,11 @@ export function FinancingOffers() {
           ))}
         </div>
 
+        {/* Coupon Disclaimer Note */}
+        <p className="mt-4 text-center text-[11px] text-slate-500">
+          * Promotional discount coupons cannot be combined with other offers. Present coupon code at time of estimate. Terms apply.
+        </p>
+
         {/* Financing Partnership Highlight Banner (Momnt Integration) */}
         <div className="mt-12 p-8 rounded-3xl bg-gradient-to-r from-[#581010] via-[#7F1D1D] to-[#581010] text-white shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6 border border-red-900/60">
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl">

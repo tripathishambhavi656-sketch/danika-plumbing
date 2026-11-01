@@ -1,11 +1,32 @@
 import { Metadata } from "next";
 import { COMPANY_INFO, VERIFIED_STATISTICS, VERIFIED_SERVICES } from "@/data/company";
 
+/**
+ * Derives the canonical site URL for the deployed project.
+ * Uses environment variables provided by Vercel or custom deployment,
+ * falling back to the project's dedicated showcase URL.
+ * NEVER points to the original business domain (danikaplumbing.com) as the canonical.
+ */
+export function getSiteUrl(): string {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
+  }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`.replace(/\/$/, "");
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`.replace(/\/$/, "");
+  }
+  return "https://danika-plumbing.vercel.app";
+}
+
+const siteUrl = getSiteUrl();
+
 export const SITE_CONFIG = {
   name: "Danika Plumbing & Electric",
   legalName: "Danika Plumbing LLC",
-  url: "https://danikaplumbing.com",
-  ogImage: "https://danikaplumbing.com/hero-plumbing.jpg",
+  url: siteUrl,
+  ogImage: `${siteUrl}/hero-plumbing.jpg`,
   description:
     "Licensed, bonded & insured plumbing and electrical contractor serving Snohomish County and King County, WA. 24/7 emergency response, upfront flat-rate pricing, and guaranteed workmanship.",
 };

@@ -98,6 +98,31 @@ danika-plumbing/
   - Synchronized browser viewport `themeColor` to brand deep red/maroon (`#7f1d1d`).
   - Verified 100% of factual business claims (HQ: 11015 Airport Road, Everett, WA; phones: (425) 374-1557 & (425) 528-8966; WA licenses #DANIKPL839PF & #DANIKPL745CD; 17+ years heritage) against official discovery data.
   - Zero linting errors and 100% static prerendering across all routes.
+- [x] **Milestone 8:** Final Functional Polish, Production Deployment & Submission Readiness
+  - Decoupled canonical URL and Open Graph metadata from the original business domain; configured dynamic environment resolution (`NEXT_PUBLIC_SITE_URL` / `VERCEL_PROJECT_PRODUCTION_URL` / `https://danika-plumbing.vercel.app`).
+  - Added commercial trade terms disclaimer to promotional coupon offers and performed full business-claim sanity audit.
+  - Audited all user flows: sticky utility bar, multi-level dropdowns, accessible mobile drawer, full-width emergency CTAs, and sticky mobile action dock.
+  - Executed clean production builds with zero ESLint warnings and static route prerendering across all 5 application endpoints.
+  - Provided comprehensive deployment guidelines for Vercel and Git CI/CD.
+
+---
+
+## 🚀 Production Deployment Guidelines
+
+This project is fully optimized for zero-configuration deployment to [Vercel](https://vercel.com).
+
+### Option A: Automatic Git Integration (Recommended)
+1. Push your repository to GitHub: `git push origin main`.
+2. In the [Vercel Dashboard](https://vercel.com/new), select **Import Git Repository**.
+3. Select `danika-plumbing`.
+4. Framework Preset will automatically detect **Next.js**.
+5. Click **Deploy**. Vercel will automatically configure `VERCEL_PROJECT_PRODUCTION_URL` and `VERCEL_URL` which the application uses dynamically for all canonical and Open Graph metadata.
+
+### Option B: Vercel CLI
+```bash
+npx vercel
+npx vercel --prod
+```
 
 ---
 
