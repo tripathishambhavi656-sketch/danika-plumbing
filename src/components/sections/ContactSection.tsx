@@ -11,10 +11,18 @@ import {
   CheckCircle2,
   MapPin,
   Send,
+  AlertCircle,
 } from "lucide-react";
+
+interface FormErrors {
+  name?: string;
+  phone?: string;
+  email?: string;
+}
 
 export function ContactSection() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -24,9 +32,54 @@ export function ContactSection() {
     message: "",
   });
 
+  const validate = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    // Validate Name
+    if (!formData.name.trim()) {
+      newErrors.name = "Full name is required.";
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = "Please enter your full name (at least 2 characters).";
+    }
+
+    // Validate Phone (at least 10 digits)
+    const phoneDigits = formData.phone.replace(/\D/g, "");
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required for dispatch confirmation.";
+    } else if (phoneDigits.length < 10) {
+      newErrors.phone = "Please enter a valid 10-digit phone number (e.g., (425) 374-1557).";
+    }
+
+    // Validate Optional Email if provided
+    if (formData.email.trim()) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email.trim())) {
+        newErrors.email = "Please enter a valid email address (e.g., name@example.com).";
+      }
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    if (validate()) {
+      setFormSubmitted(true);
+    }
+  };
+
+  const handleReset = () => {
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      service: "Emergency Plumbing",
+      urgency: "Emergency (ASAP Dispatch)",
+      message: "",
+    });
+    setErrors({});
+    setFormSubmitted(false);
   };
 
   return (
@@ -122,28 +175,48 @@ export function ContactSection() {
               <div
                 role="status"
                 aria-live="polite"
-                className="p-8 text-center flex flex-col items-center justify-center space-y-4 animate-in fade-in duration-300"
+                className="p-6 sm:p-8 text-center flex flex-col items-center justify-center space-y-4 animate-in fade-in duration-300"
               >
                 <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-black text-slate-900">Service Request Received!</h3>
-                <p className="text-sm text-slate-600 max-w-md">
-                  Thank you, <strong className="text-slate-800">{formData.name}</strong>. Our Everett dispatch team will call you at <strong className="text-slate-800">{formData.phone}</strong> shortly to confirm arrival timing and service details.
-                </p>
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-500 w-full max-w-sm">
-                  Need immediate arrival? Call us directly at <strong>{COMPANY_INFO.phoneFormatted}</strong>
+
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-extrabold uppercase tracking-wide">
+                  <span>Demo Submission Confirmed</span>
                 </div>
+
+                <h3 className="text-2xl font-black text-slate-900">
+                  Thank You, {formData.name}!
+                </h3>
+
+                <p className="text-sm text-slate-600 max-w-md leading-relaxed">
+                  Your demonstration inquiry for <strong className="text-slate-800">{formData.service}</strong> ({formData.urgency}) was processed cleanly. This redesign prototype operates in demonstration mode and does not send data to a live backend.
+                </p>
+
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 w-full max-w-md text-left space-y-1.5">
+                  <div className="font-bold text-slate-900 flex items-center gap-1.5">
+                    <Phone className="w-3.5 h-3.5 text-red-700" />
+                    <span>For Real Service at Your Everett or Seattle Home:</span>
+                  </div>
+                  <p className="text-slate-600">
+                    Contact Danika Plumbing &amp; Electric directly at{" "}
+                    <a href={`tel:${COMPANY_INFO.phonePrimary}`} className="font-bold text-red-700 hover:underline">
+                      {COMPANY_INFO.phoneFormatted}
+                    </a>{" "}
+                    for live 24/7 emergency dispatch.
+                  </p>
+                </div>
+
                 <button
                   type="button"
-                  onClick={() => setFormSubmitted(false)}
+                  onClick={handleReset}
                   className="text-xs font-bold text-red-700 hover:text-red-800 underline mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 rounded px-2 py-1"
                 >
-                  Submit Another Request
+                  Reset &amp; Test Another Request
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+              <form onSubmit={handleSubmit} noValidate className="space-y-4 sm:space-y-5">
                 <div className="border-b border-slate-100 pb-3">
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red-800">
                     <Calendar className="w-4 h-4 text-red-700" />
@@ -165,12 +238,29 @@ export function ContactSection() {
                       type="text"
                       required
                       aria-required="true"
+                      aria-invalid={errors.name ? "true" : "false"}
+                      aria-describedby={errors.name ? "customer-name-error" : undefined}
                       autoComplete="name"
                       placeholder="e.g. John Smith"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-[#991B1B] focus:ring-2 focus:ring-red-100 outline-none transition-all"
+                      onChange={(e) => {
+                        setFormData({ ...formData, name: e.target.value });
+                        if (errors.name) {
+                          setErrors({ ...errors, name: undefined });
+                        }
+                      }}
+                      className={`w-full px-4 py-2.5 rounded-xl border text-sm outline-none transition-all ${
+                        errors.name
+                          ? "border-red-500 focus:border-red-600 focus:ring-2 focus:ring-red-100 bg-red-50/20"
+                          : "border-slate-300 focus:border-[#991B1B] focus:ring-2 focus:ring-red-100"
+                      }`}
                     />
+                    {errors.name && (
+                      <p id="customer-name-error" role="alert" className="mt-1.5 text-xs font-semibold text-red-600 flex items-center gap-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.name}</span>
+                      </p>
+                    )}
                   </div>
 
                   {/* Phone */}
@@ -183,12 +273,29 @@ export function ContactSection() {
                       type="tel"
                       required
                       aria-required="true"
+                      aria-invalid={errors.phone ? "true" : "false"}
+                      aria-describedby={errors.phone ? "customer-phone-error" : undefined}
                       autoComplete="tel"
-                      placeholder="e.g. (425) 555-0199"
+                      placeholder="e.g. (425) 374-1557"
                       value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-[#991B1B] focus:ring-2 focus:ring-red-100 outline-none transition-all"
+                      onChange={(e) => {
+                        setFormData({ ...formData, phone: e.target.value });
+                        if (errors.phone) {
+                          setErrors({ ...errors, phone: undefined });
+                        }
+                      }}
+                      className={`w-full px-4 py-2.5 rounded-xl border text-sm outline-none transition-all ${
+                        errors.phone
+                          ? "border-red-500 focus:border-red-600 focus:ring-2 focus:ring-red-100 bg-red-50/20"
+                          : "border-slate-300 focus:border-[#991B1B] focus:ring-2 focus:ring-red-100"
+                      }`}
                     />
+                    {errors.phone && (
+                      <p id="customer-phone-error" role="alert" className="mt-1.5 text-xs font-semibold text-red-600 flex items-center gap-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.phone}</span>
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -239,17 +346,34 @@ export function ContactSection() {
                 {/* Email Address */}
                 <div>
                   <label htmlFor="customer-email" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                    Email Address (For Confirmation)
+                    Email Address (Optional Confirmation)
                   </label>
                   <input
                     id="customer-email"
                     type="email"
                     autoComplete="email"
+                    aria-invalid={errors.email ? "true" : "false"}
+                    aria-describedby={errors.email ? "customer-email-error" : undefined}
                     placeholder="e.g. john@example.com"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-[#991B1B] focus:ring-2 focus:ring-red-100 outline-none transition-all"
+                    onChange={(e) => {
+                      setFormData({ ...formData, email: e.target.value });
+                      if (errors.email) {
+                        setErrors({ ...errors, email: undefined });
+                      }
+                    }}
+                    className={`w-full px-4 py-2.5 rounded-xl border text-sm outline-none transition-all ${
+                      errors.email
+                        ? "border-red-500 focus:border-red-600 focus:ring-2 focus:ring-red-100 bg-red-50/20"
+                        : "border-slate-300 focus:border-[#991B1B] focus:ring-2 focus:ring-red-100"
+                    }`}
                   />
+                  {errors.email && (
+                    <p id="customer-email-error" role="alert" className="mt-1.5 text-xs font-semibold text-red-600 flex items-center gap-1">
+                      <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                      <span>{errors.email}</span>
+                    </p>
+                  )}
                 </div>
 
                 {/* Message / Notes */}
@@ -276,7 +400,7 @@ export function ContactSection() {
                   className="font-black text-base shadow-md hover:shadow-lg transition-all"
                   leftIcon={<Send className="w-4 h-4" />}
                 >
-                  Request Service Dispatch
+                  Submit Service Request
                 </Button>
 
                 {/* Assurance Micro-Copy */}
@@ -287,7 +411,7 @@ export function ContactSection() {
                   </span>
                   <span className="flex items-center gap-1">
                     <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
-                    Zero spam &bull; Your data is confidential
+                    Interactive prototype demonstration
                   </span>
                 </div>
               </form>
