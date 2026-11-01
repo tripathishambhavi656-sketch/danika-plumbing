@@ -38,22 +38,22 @@ export default function StyleGuidePage() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
       {/* Internal Navigation Header */}
-      <header className="bg-[#0A2E5C] text-white py-4 border-b border-blue-900/60 sticky top-0 z-50 backdrop-blur-md">
+      <header className="bg-[#450A0A] text-white py-4 border-b border-red-950 sticky top-0 z-50 backdrop-blur-md">
         <Container className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Link
               href="/"
-              className="text-lg font-extrabold tracking-tight text-white hover:text-orange-400 transition-colors"
+              className="text-lg font-extrabold tracking-tight text-white hover:text-red-200 transition-colors"
             >
               Danika Plumbing & Electric
             </Link>
-            <span className="text-xs bg-orange-500/20 text-orange-400 border border-orange-500/40 px-2 py-0.5 rounded font-mono font-semibold">
+            <span className="text-xs bg-red-900/60 text-red-200 border border-red-700/60 px-2 py-0.5 rounded font-mono font-semibold">
               Design System v1.0
             </span>
           </div>
           <Link
             href="/"
-            className="text-xs text-blue-200 hover:text-white transition-colors flex items-center gap-1 font-semibold"
+            className="text-xs text-red-200 hover:text-white transition-colors flex items-center gap-1 font-semibold"
           >
             ← Back to Home
           </Link>

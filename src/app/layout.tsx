@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = DEFAULT_METADATA;
 
 export const viewport: Viewport = {
-  themeColor: "#0f3e74",
+  themeColor: "#7f1d1d",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,

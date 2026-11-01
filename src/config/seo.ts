@@ -1,17 +1,20 @@
 import { Metadata } from "next";
-import { COMPANY_INFO, VERIFIED_STATISTICS } from "@/data/company";
+import { COMPANY_INFO, VERIFIED_STATISTICS, VERIFIED_SERVICES } from "@/data/company";
 
 export const SITE_CONFIG = {
   name: "Danika Plumbing & Electric",
   legalName: "Danika Plumbing LLC",
   url: "https://danikaplumbing.com",
-  ogImage: "https://danikaplumbing.com/og-danika.jpg",
+  ogImage: "https://danikaplumbing.com/hero-plumbing.jpg",
   description:
     "Licensed, bonded & insured plumbing and electrical contractor serving Snohomish County and King County, WA. 24/7 emergency response, upfront flat-rate pricing, and guaranteed workmanship.",
 };
 
 export const DEFAULT_METADATA: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
+  alternates: {
+    canonical: SITE_CONFIG.url,
+  },
   title: {
     default: "Danika Plumbing & Electric | 24/7 Plumber & Electrician in Everett & Seattle, WA",
     template: "%s | Danika Plumbing & Electric",
@@ -29,6 +32,7 @@ export const DEFAULT_METADATA: Metadata = {
     "electrical panel upgrade 200 amp",
     "EV charger installation Everett",
     "Danika Plumbing",
+    "Danika Plumbing & Electric",
   ],
   authors: [{ name: "Danika Plumbing & Electric" }],
   creator: "Danika Plumbing & Electric",
@@ -45,11 +49,20 @@ export const DEFAULT_METADATA: Metadata = {
     title: "Danika Plumbing & Electric | 24/7 Plumber & Electrician in Everett & Seattle, WA",
     description: SITE_CONFIG.description,
     siteName: SITE_CONFIG.name,
+    images: [
+      {
+        url: SITE_CONFIG.ogImage,
+        width: 1200,
+        height: 630,
+        alt: "Danika Plumbing & Electric — Everett & Seattle 24/7 Multi-Trade Contractor",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Danika Plumbing & Electric | 24/7 Plumber in Everett & Seattle, WA",
+    title: "Danika Plumbing & Electric | 24/7 Plumber & Electrician in Everett & Seattle, WA",
     description: SITE_CONFIG.description,
+    images: [SITE_CONFIG.ogImage],
   },
   robots: {
     index: true,
@@ -77,8 +90,11 @@ export function getLocalBusinessJsonLd() {
     url: SITE_CONFIG.url,
     telephone: `+1-${COMPANY_INFO.phonePrimary}`,
     email: COMPANY_INFO.email,
-    image: `${SITE_CONFIG.url}/danika-updated-logo.svg`,
+    image: `${SITE_CONFIG.url}/hero-plumbing.jpg`,
     priceRange: "$$",
+    foundingDate: "2009",
+    currenciesAccepted: "USD",
+    paymentAccepted: ["Cash", "Credit Card", "Momnt Consumer Financing"],
     address: {
       "@type": "PostalAddress",
       streetAddress: COMPANY_INFO.address.street,
@@ -127,5 +143,18 @@ export function getLocalBusinessJsonLd() {
       { "@type": "AdministrativeArea", name: "Snohomish County" },
       { "@type": "AdministrativeArea", name: "King County" },
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Plumbing & Electrical Services",
+      itemListElement: VERIFIED_SERVICES.map((service, index) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.title,
+          description: service.shortDescription,
+        },
+        position: index + 1,
+      })),
+    },
   };
 }
